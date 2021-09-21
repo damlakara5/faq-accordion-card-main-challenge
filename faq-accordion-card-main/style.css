@@ -55,7 +55,10 @@ h1 {
   margin: 15px 0;
   color: hsl(240, 6%, 50%);
 }
-
+.bold {
+  color: black;
+  font-weight: 700;
+}
 .hidden {
   display: none;
 }
