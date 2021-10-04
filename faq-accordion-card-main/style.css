@@ -12,7 +12,7 @@ body {
 }
 
 .card {
-  min-width: 80%;
+  width: 1000px;
   margin: auto;
   background-image: url(/images/bg-pattern-desktop.svg);
   background-color: white;
@@ -23,7 +23,6 @@ body {
   font-weight: 300;
   border-radius: 30px;
   padding-bottom: 30px;
-  overflow: hidden;
 }
 
 .container {
@@ -38,6 +37,7 @@ h1 {
 
 .photo {
   width: 100%;
+  position: relative;
 }
 .woman {
   margin-left: -70px;
@@ -45,25 +45,37 @@ h1 {
 
 .box {
   position: absolute;
-  top: 5%;
-  bottom: -10%;
-  left: 25px;
-  margin: auto;
+  top: 50%;
+  /* İçerisinde bulunduğu divin üst noktasından yarı yarıya boşluk vermesi için top:50% */
+  transform: translate(-50%, -25%);
+  z-index: 1;
+  /* görsel altında kutu kadar gölge var o yüzden %25 kadar yukarı almak için bunu kullandım 'transfom' X,Y yatay ve dikey olarak her zaman kendi boyutunu baz alır*/
+}
+
+.mobile {
+  display: none;
 }
 
 .question {
   margin: 15px 0;
   color: hsl(240, 6%, 50%);
+  cursor: pointer;
 }
+
 .bold {
   color: black;
   font-weight: 700;
 }
+.answer {
+  margin: 15px 0;
+  color: hsl(240, 6%, 50%);
+}
+
 .hidden {
   display: none;
 }
 
-.question::after {
+.row::after {
   content: " ";
   display: block;
   border-bottom: 1px solid hsl(240, 5%, 91%);
@@ -78,4 +90,65 @@ h1 {
 
 .rotate {
   transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 1024px) {
+  .woman {
+    background-size: cover;
+    height: 80%;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .card {
+    grid-template-columns: 40% 60%;
+  }
+  .photo {
+    background-image: url(/images/illustration-woman-online-mobile.svg);
+    width: 100%;
+    margin-left: -50px;
+    position: relative;
+    top: 30%;
+    background-repeat: no-repeat;
+  }
+  .woman,
+  .box {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .arrow {
+    right: 15%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .card {
+    max-width: 700px;
+    grid-template-columns: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .container {
+    padding-right: 10px;
+    padding-left: 30px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  .photo {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    position: absolute;
+    top: 0px;
+  }
 }
